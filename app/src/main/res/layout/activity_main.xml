@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/tolLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/connectButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/but2"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:onClick="connectButtonPressed"
+            android:text="Подключить\nбазу"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/statButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/but2"
+            android:enabled="false"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:onClick="statButtonPressed"
+            android:text="Статус\nмишеней"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/shootButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/but2"
+            android:enabled="false"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:onClick="shootButtonPressed"
+            android:text="Зачетная\ncтрельба"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/stopButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/but2"
+            android:enabled="false"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:text="Стоп-\nмишень"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/trainButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/but2"
+            android:enabled="false"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:text="Тестовая\nстрельба"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/setupButton"
+            style="@style/CompText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/but2"
+            android:enabled="false"
+            android:fontFamily="@font/techno"
+            android:gravity="center"
+            android:text="Настройки\nсистемы"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/statusRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tolLL"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/targetslist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shootRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tolLL"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/shootLL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/target1"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget1list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget1name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget1name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target2"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget2list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget2name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget2name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target3"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarge3list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget3name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget3name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target4"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget4list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget4name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget4name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target5"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget5list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget5name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget5name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target6"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget6list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget6name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget6name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target7"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget7list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget7name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget7name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/target8"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cornerborder">
+
+                        <ListView
+                            android:id="@+id/shoottarget8list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/shoottarget8name"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/shoottarget8name"
+                            style="@style/targetname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Мишень № 1" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:id="@+id/startshootbutton"
+                    style="@style/CompText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/but2"
+                    android:fontFamily="@font/techno"
+                    android:gravity="center"
+                    android:text="Старт"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shoottimer"
+                    style="@style/CompText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/stopRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tolLL"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"></RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setupRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tolLL"
+        android:layout_marginTop="5dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/setsens"
+                        style="@style/CompText"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:background="@drawable/but2"
+                        android:text="УСТАНОВИТЬ" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/setsens"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/sensitivity"
+                            style="@style/CompText2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Чувствительность мишеней" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#A10088FF"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center|center_horizontal|center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="@style/CompText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Продолжитеkьность зачетной стрельбы (сек.)" />
+
+                    <EditText
+                        android:id="@+id/shootcont"
+                        style="@style/CompText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/textView3"
+                        android:layout_alignParentTop="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@id/textView3"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="center_horizontal"
+                        android:hint="Время в секундах"
+                        android:inputType="number|textPersonName"
+                        android:textColorHint="#8300FFD9" />
+
+                    <Button
+                        android:id="@+id/setshoottime"
+                        style="@style/CompText"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:background="@drawable/but2"
+                        android:text="Установить" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trainRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tolLL"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"></RelativeLayout>
+
+</RelativeLayout>
